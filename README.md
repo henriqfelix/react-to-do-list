@@ -4,7 +4,7 @@
 
 <h2>Sobre o projeto 🔥</h2>
 
-<p>Depois de um tempo estudando Javascript, resolvi desenvolver meu primeiro projeto em React. Este é um app bastante conhecido, o "To Do List", durante o processo de criação, vi coisas como **fetch api**,  **db.json**, **useState**, **useEffect** e mais.<br />
+<p>Depois de um tempo estudando Javascript, resolvi desenvolver meu primeiro projeto em React. Este é um app bastante conhecido, o "To Do List", durante o processo de criação, vi coisas como <strong>fetch api</strong>, <strong>db.json</strong>, <strong>useState</strong>, <strong>useEffect</strong> e mais.<br />
 Neste projeto podemos salvar tarefas, adicionando um título e uma duração estimada que levará para realizá-la. Abaixo elas serão exibidas e poderão ser marcadas como já realizadas ou excluídas.</p>
 
 ---
@@ -25,13 +25,13 @@ Neste projeto podemos salvar tarefas, adicionando um título e uma duração est
    npm start
 ```
 
-<h3>Requisitos ⚠️ </h3>
-
-- Necessário ter **Node** instalado
-
 O projeto será iniciado no endereço **localhost:3000**.
 
 O banco de dados db.json ficará no **localhost:5000**.
+
+<h3>Requisitos ⚠️ </h3>
+
+- Necessário ter **Node** instalado
 
 ---
 
