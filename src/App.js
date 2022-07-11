@@ -1,7 +1,11 @@
 import "./App.css";
 
 import { useState, useEffect } from "react";
-import { BsThash, BsBookmarkCheck, BsBookmarkCheckFill } from "react-icons/bs";
+import {
+  BsFillTrashFill,
+  BsBookmarkCheck,
+  BsBookmarkCheckFill,
+} from "react-icons/bs";
 
 const API = "http://localhost:5000";
 
@@ -11,7 +15,24 @@ function App() {
   const [todos, setTodos] = useState([]);
   const [loading, setLoading] = useState(false);
 
-  const handleSubmit = (e) => {
+  //LOAD TODOS ON PAGE LOAD
+  useEffect(() => {
+    const loadData = async () => {
+      setLoading(true);
+
+      const res = await fetch(API + "/todos")
+        .then((res) => res.json())
+        .then((data) => data)
+        .catch((e) => console.log(e.message));
+
+      setLoading(false);
+
+      setTodos(res);
+    };
+    loadData();
+  }, []);
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
     const todo = {
@@ -21,11 +42,22 @@ function App() {
       done: false,
     };
 
-    //ENVIO PARA API
-    console.log(todo);
+    await fetch(API + "/todos", {
+      method: "POST",
+      body: JSON.stringify(todo),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+
+    setTodos((prevState) => [...prevState, todo]);
 
     setTitle("");
     setTime("");
+
+    if (loading) {
+      return <p>Carregando...</p>;
+    }
   };
 
   return (
@@ -46,6 +78,7 @@ function App() {
               onChange={(e) => setTitle(e.target.value)}
               value={title || ""}
               required
+              autoComplete="off"
             />
           </div>
           <div className="form-control">
@@ -58,6 +91,7 @@ function App() {
               onChange={(e) => setTime(e.target.value)}
               value={time || ""}
               required
+              autoComplete="off"
             />
           </div>
           <input type="submit" value="Criar tarefa" />
@@ -66,6 +100,18 @@ function App() {
       <div className="list-todo">
         <h2>Lista de Tarefas:</h2>
         {todos.length === 0 && <p>Não há tarefas!</p>}
+        {todos.map((todo) => (
+          <div className="todo" key={todo.id}>
+            <h3 className={todo.done ? "todo-done" : ""}>{todo.title}</h3>
+            <p>Duração: {todo.time}</p>
+            <div className="actions">
+              <span>
+                {!todo.done ? <BsBookmarkCheck /> : <BsBookmarkCheckFill />}
+              </span>
+              <BsFillTrashFill />
+            </div>
+          </div>
+        ))}
       </div>
     </div>
   );
