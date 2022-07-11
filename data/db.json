@@ -1,28 +1,3 @@
 {
-  "todos": [
-    {
-      "id": 0.7911742548736451,
-      "title": "estudar",
-      "time": "1",
-      "done": false
-    },
-    {
-      "id": 0.9343071987894629,
-      "title": "almoçar",
-      "time": "1",
-      "done": false
-    },
-    {
-      "id": 0.47573283953610623,
-      "title": "jantar",
-      "time": "1",
-      "done": false
-    },
-    {
-      "id": 0.6246223923341425,
-      "title": "café da tarde",
-      "time": "1",
-      "done": false
-    }
-  ]
+  "todos": []
 }
